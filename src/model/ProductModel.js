@@ -2,11 +2,16 @@ import mongoose from "mongoose";
 
 const ProdcutSchema = new mongoose.Schema(
   {
-    name: { type: String },
-    brand: { type: String },
-    category: { type: String },
-    description: { type: String },
-    img: { type: String },
+    title: { type: String, required: true },
+    img: { type: String, required: true },
+    description: { type: String, required: true },
+    price: { type: String, required: true },
+    discount: { type: Boolean, required: true },
+    discountPrice: { type: String, required: true },
+    stock: { type: String, required: true },
+    remark: { type: String, required: true },
+    brand: { type: mongoose.Schema.Types.ObjectId, required: true },
+    category: { type: mongoose.Schema.Types.ObjectId, required: true },
   },
   {
     timestamps: true,
