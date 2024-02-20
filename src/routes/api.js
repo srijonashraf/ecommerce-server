@@ -1,10 +1,8 @@
-import express from 'express';
-import * as WelcomeController from '../controllers/WelcomeController.js';
+import express from "express";
+import { ProductBrandList } from "../controllers/ProductController.js";
 const router = express.Router();
 
-
-// Define route for "/WelcomeAPI" endpoint
-router.get('/welcome', WelcomeController.Welcome);
-
+//Product
+router.get("/ProductBrandList", ProductBrandList);
 
 export default router;
