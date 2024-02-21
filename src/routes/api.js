@@ -1,8 +1,11 @@
 import express from "express";
-import { ProductBrandList } from "../controllers/ProductController.js";
+import * as ProductController from "../controllers/ProductController.js";
 const router = express.Router();
 
 //Product
-router.get("/ProductBrandList", ProductBrandList);
+router.get("/ProductBrandList", ProductController.ProductBrandList);
+router.get("/ProductCategoryList", ProductController.ProductCategoryList);
+router.get("/ProductListByBrand/:BrandID",ProductController.ProductListByBrand
+);
 
 export default router;
