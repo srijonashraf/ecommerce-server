@@ -100,3 +100,68 @@ export const ListByBrandService = async (req) => {
     return { status: "fail", data: error };
   }
 };
+
+export const ListByCategoryService = async (req) => {
+  try {
+    let CategoryID = new ObjectId(req.params.CategoryID);
+
+    let MatchStage = { $match: { categoryID: CategoryID } };
+
+    let JoinWithBrandStage = {
+      $lookup: {
+        from: "brands",
+        localField: "brandID",
+        foreignField: "_id",
+        as: "brand",
+      },
+    };
+
+    let JoinWithCategoryStage = {
+      $lookup: {
+        from: "categories",
+        localField: "categoryID",
+        foreignField: "_id",
+        as: "category",
+      },
+    };
+
+    let UnwindBrandStage = { $unwind: "$brand" };
+
+    let UnwindCategoryStage = { $unwind: "$category" };
+
+    let ProjectionStage = {
+      $project: {
+        "brand._id": 0,
+        "category._id": 0,
+        "brand.createdAt": 0,
+        "brand.updatedAt": 0,
+        "category.createdAt": 0,
+        "category.updatedAt": 0,
+        categoryID: 0,
+        brandID: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      },
+    };
+
+    // Query
+    let data = await ProductModel.aggregate([
+      MatchStage,
+      JoinWithCategoryStage,
+      JoinWithBrandStage,
+      UnwindBrandStage,
+      UnwindCategoryStage,
+      ProjectionStage,
+    ]);
+
+    if (!data) {
+      return { status: "fail", message: "Data not found" };
+    }
+    return { status: "success", data: data };
+  } catch (error) {
+    return { status: "fail", data: error };
+  }
+};
+
+
+//!Create AuthVerifyMiddleware at first

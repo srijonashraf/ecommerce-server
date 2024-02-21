@@ -5,7 +5,7 @@ const router = express.Router();
 //Product
 router.get("/ProductBrandList", ProductController.ProductBrandList);
 router.get("/ProductCategoryList", ProductController.ProductCategoryList);
-router.get("/ProductListByBrand/:BrandID",ProductController.ProductListByBrand
-);
+router.get("/ProductListByBrand/:BrandID",ProductController.ProductListByBrand);
+router.get("/ProductListByCategory/:CategoryID",ProductController.ProductListByCategory);
 
 export default router;
