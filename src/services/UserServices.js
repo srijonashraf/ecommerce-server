@@ -98,8 +98,6 @@ export const SaveProfileService = async (req) => {
     let userId = req.headers.userId;
     let reqBody = req.body;
 
-    console.log("⭐", userId);
-
     if (!userId) {
       return {
         status: "fail",
