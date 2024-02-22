@@ -4,9 +4,10 @@ dotenv.config();
 
 const EmailSend = async (EmailTo, EmailText, EmailSubject) => {
   const transporter = nodemailer.createTransport({
+    service: "Gmail", //Delete this when in hosting deployment
     host: process.env.EMAIL_HOST,
     port: process.env.EMAIL_PORT,
-    secure: false,
+    secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
@@ -20,7 +21,7 @@ const EmailSend = async (EmailTo, EmailText, EmailSubject) => {
     from: process.env.EMAIL_USER,
     to: EmailTo,
     subject: EmailSubject,
-    text: EmailText,
+    html: EmailText,
   };
 
   try {
