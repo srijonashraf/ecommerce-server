@@ -12,8 +12,6 @@ export const SaveCategoryService = async (req) => {
       { $set: reqBody },
       { upsert: true }
     );
-    console.log(CategoryID);
-    console.log(SaveCategoryResponse);
 
     if (
       SaveCategoryResponse.modifiedCount > 0 ||
