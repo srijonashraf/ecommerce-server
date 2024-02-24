@@ -118,3 +118,22 @@ export const SaveProfileService = async (req) => {
     return { status: "fail", message: "Something went wrong.", data: error };
   }
 };
+
+export const ProfileDetailsService = async (req) => {
+  try {
+    let userId = req.headers.userId;
+    if (!userId) {
+      return {
+        status: "fail",
+        message: "User Id not found from header. Check token",
+      };
+    }
+    let data = await UserModel.findOne({ userId: userId });
+    if (!data) {
+      return { status: "fail", message: "Data not found" };
+    }
+    return { status: "success", data: data };
+  } catch (error) {
+    return { status: "fail", message: "Something went wrong.", data: error };
+  }
+};

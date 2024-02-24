@@ -51,15 +51,7 @@ export const DeteleBrandService = async (req) => {
 };
 
 export const BrandListService = async (req) => {
-  let ProjectionStage = {
-    $project: {
-      _id: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    },
-  };
-
-  let data = await BrandModel.aggregate([ProjectionStage]);
+  let data = await BrandModel.find();
 
   if (!data) {
     return { status: "fail", message: "Data not found" };

@@ -1,8 +1,10 @@
 import {
+  AllProductService,
   DeleteService,
   DetailsService,
   ListByBrandService,
   ListByCategoryService,
+  ListByFilterService,
   ListByKeywordService,
   ListByRemarkService,
   SaveService,
@@ -28,6 +30,11 @@ export const ProductListByKeyword = async (req, res) => {
   return res.status(200).json(result);
 };
 
+export const ProductListByFilter = async (req, res) => {
+  let result = await ListByFilterService(req);
+  return res.status(200).json(result);
+};
+
 export const ProductDetails = async (req, res) => {
   let result = await DetailsService(req);
   return res.status(200).json(result);
@@ -47,3 +54,9 @@ export const ProductDelete = async (req, res) => {
   let result = await DeleteService(req);
   return res.status(200).json(result);
 };
+
+export const AllProductList = async (req, res) => {
+  let result = await AllProductService(req);
+  return res.status(200).json(result);
+};
+

@@ -1,4 +1,5 @@
 import {
+  ProfileDetailsService,
   SaveProfileService,
   SendOTPService,
   VerifyOTPService,
@@ -23,3 +24,8 @@ export const UpdateProfile = async (req, res) => {
   let result = await SaveProfileService(req);
   return res.status(200).json(result);
 };
+
+export const ProfileDetails = async (req, res) => {
+  let result = await ProfileDetailsService(req);
+  return res.status(200).json(result);
+}
