@@ -1,3 +1,4 @@
-### API Documentation: https://documenter.getpostman.com/view/28939375/2sA2rB1NnJ
+# eShop
 
-**Live**: https://eshop-server-srijonashraf.vercel.app/
+## API Documentation
+https://documenter.getpostman.com/view/28939375/2sA2rB1NnJ
